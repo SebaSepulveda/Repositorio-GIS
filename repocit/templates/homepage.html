@@ -1,0 +1,58 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+    <section class="jumbotron">
+        <div class="container">
+            {% include "_messages.html" %}
+            <h1>{% blocktrans %}Bienvenido a<br>Proyecto RepoCIT{% endblocktrans %}</h1>
+            <p>
+                {% blocktrans %}
+                Repositorio CIT para Bases de datos
+                {% endblocktrans %}
+            </p>
+            {% if not user.is_authenticated %}
+            <!-- Aca cosas pre registro-->
+            {% url "account_login" as login_url %}
+            {% url "account_signup" as signup_url %}
+            <p>{% blocktrans %}Puedes <a href="{{ login_url }}" class="btn btn-default">Entrar</a> o <a href="{{ signup_url }}" class="btn btn-primary">Registrarse</a> Para poder ver el sitio.{% endblocktrans %}</p>
+            {% endif %}
+            {% if  user.is_authenticated %}
+            <!-- Aca cosas post registro-->
+
+                <a href="download" class ="btn btn-primary">Descarga</a> <br><br>
+                <a href="upload" class ="btn btn-primary">Carga</a>
+
+
+            {% endif %}
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h2 class="text-center">{% blocktrans %}¿Qué es Repositorio CIT?{% endblocktrans %}</h2>
+            <p class="lead">
+                {% blocktrans %}
+                <b>RepoCIT</b> Es un proyecto ciae-CIT bla bla
+                {% endblocktrans %}
+            </p>
+            <div class="feature-columns">
+               
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <p class="lead text-center">
+                {% blocktrans %}
+                See <a href="http://www.uai.cl">UAI</a>
+                para mayor informacion
+                {% endblocktrans %}
+            </p>
+        </div>
+    </section>
+{% endblock %}
