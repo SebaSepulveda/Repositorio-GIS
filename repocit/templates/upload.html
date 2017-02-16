@@ -20,13 +20,11 @@
             {% if  user.is_authenticated %}
             <!-- Aca cosas post registro-->
             	{% block content %}
-                   	<form method="post" enctype="multipart/form-data">
-					    {% csrf_token %}
-					    {{ form.as_p }}
-					    <button type="submit">Upload</button>
-					  </form>
-					          
-					  <p><a href="{% url 'home' %}">Return to home</a></p>
+                   	<form action='.' method="post" enctype="multipart/form-data">
+                    <input name="f" type="file" id="file" />
+                    <input type="submit" id="submit" value="Submit File" />
+                    {% csrf_token %}
+                    </form>
 
 				{% endblock %}
 
